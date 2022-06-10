@@ -88,13 +88,13 @@ contract ChainBattles is ERC721URIStorage {
 
     /** 
      * @dev Checks if the current user owns an NFT (exist & it's the owner)
-     * @param tokenId way to keep track of the N of NFT's
+     * @param _tokenId way to keep track of the N of NFT's
      */
-    function train(uint256 tokenId) public {
+    function train(uint256 _tokenId) public {
         // ? functions from the ERC721 standard
-        require(_exists(tokenId));
-        require(ownerOf(tokenId) == msg.sender, "You must own this NFT to train it!");
-
+        require(_exists(_tokenId));
+        require(ownerOf(_tokenId) == msg.sender, "You must own this NFT to train it!");
+        
         // update stats
         uint256 currentLevel = tokenIdToLevel[_tokenId];
         tokenIdToLevel[_tokenId] = currentLevel + 1;
