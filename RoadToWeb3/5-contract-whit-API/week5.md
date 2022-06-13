@@ -8,7 +8,8 @@
     - [upKeep notes](#upkeep-notes)
   - [Some pointers](#some-pointers)
     - [How does the upKeeper works?](#how-does-the-upkeeper-works)
-  - [Read Later](#read-later)
+- [Extra Explanation](#extra-explanation)
+  - [Testing](#testing)
 
 
 # Submit Info
@@ -52,9 +53,8 @@ Latest price: 2908609414119
 
 ## Steps:
 - Using the openZeppelli contract wizard, create and ERC721 (Mintable:AutoincrementIds, Enumerable, URIStorage)
-- Deploy it in remix and test it (safeMint:whit deployer acc, balanceOf:whit deployer acc, tokenURI:0, totalSupply)
-- Test the contract in remix by deploying this `MockaggregatorV3.sol` then using that contract addresa as constructor parameter for `BullBear.sol`
-  - Mock aggregator contract
+- Test it in the Remix enviroment or whit Hardhat.
+
 ```c#
 // SPDX-License-Identifier: MIT
 
@@ -76,6 +76,15 @@ import "@chainlink/contracts/src/v0.6/tests/MockV3Aggregator.sol";
 It calls our contract everytime a block in chain is mined, the our contract only makes changes if the interval condition is meet!
 
 
-## Read Later
-- [chainlink midleware](https://docs.chain.link/docs/chainlink-keepers/compatible-contracts/)
-- [more chainlink stuff](https://docs.chain.link/docs/get-the-latest-price/)
+# Extra Explanation
+[get pair's prices](https://docs.chain.link/docs/get-the-latest-price/)
+**Contract is in aggregator/PriceConsumer.sol**
+This makes a request to the chainlink Oracle to get the price of the given pair, view docs to get a different pair or tesnet.
+
+[contract automatization](https://docs.chain.link/docs/chainlink-keepers/introduction/)
+**contract is in automanic/**
+[add randomness]()
+
+
+## Testing
+[All methods to test](https://ethereum-waffle.readthedocs.io/en/latest/matchers.html)

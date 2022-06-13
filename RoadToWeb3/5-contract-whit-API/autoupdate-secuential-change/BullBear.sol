@@ -1,15 +1,26 @@
 // SPDX-License-Identifier: MIT
-pragma solidity ^0.8.4;
+pragma solidity ^0.8.8;
 
+// open zeppelin standards
 import "@openzeppelin/contracts/token/ERC721/ERC721.sol";
 import "@openzeppelin/contracts/token/ERC721/extensions/ERC721Enumerable.sol";
 import "@openzeppelin/contracts/token/ERC721/extensions/ERC721URIStorage.sol";
 import "@openzeppelin/contracts/access/Ownable.sol";
 import "@openzeppelin/contracts/utils/Counters.sol";
 
-contract BullBear is ERC721, ERC721Enumerable, ERC721URIStorage, Ownable {
+// chain.link for automated updates
+import "@chainlink/contracts/src/v0.8/KeeperCompatible.sol";
+
+
+contract BullBear is ERC721, ERC721Enumerable, ERC721URIStorage, Ownable, KeeperCompatibleInterface {
     using Counters for Counters.Counter;
     Counters.Counter private _tokenIdCounter;
+    uint basicChangesCounter;// every time we make a call to the keepers we increment this then use it to calculate the next uri of the nft.
+    mapping(uint=>address) public tokenToUser;
+
+    //? keeper variables
+    uint public immutable interval;
+    uint public lastTimeStamp;
 
     //Fixed size arr for gas optimization
     string[3] bullUrisIpfs = [
@@ -24,15 +35,58 @@ contract BullBear is ERC721, ERC721Enumerable, ERC721URIStorage, Ownable {
         "https://ipfs.io/ipfs/QmQMqVUHjCAxeFNE9eUxf89H1b7LpdzhvQZ8TXnj4FPuX1?filename=beanie_bear.json"
     ];
 
-    constructor() ERC721("BullBear", "BBS") {
+    constructor(uint256 _updateInterval) ERC721("BullBear", "BBS"){
+        interval = _updateInterval;
+        lastTimeStamp = block.timestamp;
     }
 
-    function safeMint(address to) public /**onlyOwner*/ {
+    function safeMint(address _to) public /**onlyOwner*/ {
         uint256 tokenId = _tokenIdCounter.current();
         _tokenIdCounter.increment();
-        _safeMint(to, tokenId);
+        //store the owner of the NFT
+        tokenToUser[tokenId]=msg.sender;
+        // mint NFT
+        _safeMint(_to, tokenId);
         // default to simple bull.json URI
         _setTokenURI(tokenId, bullUrisIpfs[0]);
+    }
+
+    function updateUriWhitCounter() public {
+        // !add a way to link user whit the token they own
+        uint256 index = basicChangesCounter % 3;//0,1,2
+        basicChangesCounter++;
+
+        string memory uri;
+
+        if(basicChangesCounter % 5 <= 2) {
+            //bull uri
+            uri = bullUrisIpfs[index];
+        } else {
+            //bear uri
+            uri = bearUrisIpfs[index];
+        }
+
+        //update all the nft's
+        uint256 currCounter = _tokenIdCounter.current();
+        for (uint index; index < currCounter; index++) {
+            _setTokenURI(index, uri);
+        }
+    }
+
+    /*
+    *Upkeep functions
+    */
+    // this is the function that get's called once every new block is mined (off-chain)
+    // just to check if the callback function should be called
+    function checkUpkeep(bytes calldata /* checkData */) external view override returns (bool upkeepNeeded, bytes memory /* performData */) {
+        upkeepNeeded = (block.timestamp - lastTimeStamp) > interval;
+    }
+
+    // callback function (on-chain)
+    function performUpkeep(bytes calldata /* performData */) external override {
+        require((block.timestamp - lastTimeStamp) > interval,"Second check for interval failed");
+        lastTimeStamp = block.timestamp;
+        updateUriWhitCounter();
     }
 
     /*
