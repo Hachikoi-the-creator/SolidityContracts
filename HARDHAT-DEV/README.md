@@ -1,6 +1,31 @@
-# Basic Sample Hardhat Project
+# Table of contents
+- [Table of contents](#table-of-contents)
+- [Full steps](#full-steps)
+  - [contract deployments](#contract-deployments)
+  - [Hardhard commands](#hardhard-commands)
 
-This project demonstrates a basic Hardhat use case. It comes with a sample contract, a test for that contract, a sample script that deploys that contract, and an example of a task implementation, which simply lists the available accounts.
+
+# Full steps
+1. Create a basic contract whit contract wizard (ERC721, mintable, auto-increment id's, enumerable, URI storage)
+2. Inside the contract create 2 fixed arrays whit the URI for the NFT's (.json files)
+3. Add `KeeperCompatible` from chainlik (import it, and inherit from it)
+4. Run a function to make a change in the callback from `KeeperCompatible`, as well as add a new param to the constructor (timeInterval) for the `KeeperCompatible`
+5. **Alchemy** Create a new mumbai app, and copy the URL-like link on your .env, as well as your mumbai private key & your polygonscan API key
+6. Create a deploy script (just modify the sample)
+7. Deploy the contract `npx hardhat run scripts/YOUR_CONTRACT.sol --network mumbai`
+8. verify your contract `npx hardhat verify --network mumbai YOUR_SMARTCONTRACT_ADDRESS`
+9. **Oracle stuff** Register a new upkeep once the contract has been validated [here](https://keepers.chain.link/mumbai/new)
+10. [Mumbai LINK tokens](https://faucets.chain.link/mumbai)
+
+
+## contract deployments
+**BullBear whit secueantial auto-update**
+- (rinkeby) - 0x67a7E7010F8D864Ee01f8E4833b955a06DCcD21a 
+- (mumbai empty constructor VERIFIED) - 0x6371AbB68214A7a6964fdBcE17451a3180d493Ff
+- (mumbai) - 0x37c564cf66128C01f2fD05B2ce3611Fca4ee89D1
+****
+
+
 
 Try running some of the following tasks:
 
