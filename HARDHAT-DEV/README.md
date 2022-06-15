@@ -13,21 +13,24 @@
 5. **Alchemy** Create a new mumbai app, and copy the URL-like link on your .env, as well as your mumbai private key & your polygonscan API key
 6. Create a deploy script (just modify the sample)
 7. Deploy the contract `npx hardhat run scripts/YOUR_CONTRACT.sol --network mumbai`
-8. verify your contract `npx hardhat verify --network mumbai YOUR_SMARTCONTRACT_ADDRESS`
+8. verify your contract `npx hardhat verify --network mumbai YOUR_CONTRACT_ADDRESS YOUR_CONSTRUCTOR_ARGUMENT` [docs](https://hardhat.org/plugins/nomiclabs-hardhat-etherscan)
 9. **Oracle stuff** Register a new upkeep once the contract has been validated [here](https://keepers.chain.link/mumbai/new)
 10. [Mumbai LINK tokens](https://faucets.chain.link/mumbai)
 
 
 ## contract deployments
 **BullBear whit secueantial auto-update**
-- (rinkeby) - 0x67a7E7010F8D864Ee01f8E4833b955a06DCcD21a 
-- (mumbai empty constructor VERIFIED) - 0x6371AbB68214A7a6964fdBcE17451a3180d493Ff
-- (mumbai) - 0x37c564cf66128C01f2fD05B2ce3611Fca4ee89D1
-****
+- (mumbai, empty constructor VERIFIED) - 0x6371AbB68214A7a6964fdBcE17451a3180d493Ff
+- (mumbai, constructor w/args VERIFIED) - 0x37c564cf66128C01f2fD05B2ce3611Fca4ee89D1
+
+**Price consumer BTC/USD**
+- (rinkeby, basic OK) 0x56cEa0E7ac41794568590BC1D6623F5E7599FA26
+
+**Full price feed & automatic**
+- (rinkeby, cons w/arg 300 VERIFIED) - 0xacFd0f27823296183E2e2017C457339358e00c60
 
 
 
-Try running some of the following tasks:
 
 ## Hardhard commands
 

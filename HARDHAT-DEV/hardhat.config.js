@@ -14,16 +14,29 @@ module.exports = {
   solidity: "0.8.8",
 
   networks: {
-    mumbai: {
-      url: process.env.ALCHEMY_API_KEY,
-      accounts: [process.env.MUMBAI_PRIVATE_KEY],
+    rinkeby: {
+      url: process.env.RINKEBY_ALCHEMY_LINK,
+      accounts: [process.env.METAMASK_PRIVATE_KEY],
     },
   },
 
   etherscan: {
     apiKey: {
-      polygonMumbai: process.env.POLYGONSCAN_API_KEY,
+      rinkeby: process.env.ETHERSCAN_API_KEY,
     },
   },
+  // -------------- MUMBAI
+  // networks: {
+  //   mumbai: {
+  //     url: process.env.MUMBAI_ALCHEMY_API_KEY,
+  //     accounts: [process.env.METAMASK_PRIVATE_KEY],
+  //   },
+  // },
+
+  // etherscan: {
+  //   apiKey: {
+  //     polygonMumbai: process.env.POLYGONSCAN_API_KEY,
+  //   },
+  // },
 };
 
