@@ -11,8 +11,8 @@ require("@nomiclabs/hardhat-etherscan");
 
 
 module.exports = {
-  solidity: "0.8.8",
-
+  solidity: "0.8.7",
+  // ---------- RINKEBY 
   networks: {
     rinkeby: {
       url: process.env.RINKEBY_ALCHEMY_LINK,

@@ -16,22 +16,12 @@
 
 
 # Submit Info
-contract adx2 SHORTER random template (rkby): 0x047E019F5060F4ECb290902B9D4fdE3E86Fae668
-
-contract adx3 final deployemtn whit randomness implemented(rkby): 0xeBE28A9525DCb23192b20467757d491D176eeD4E
-
-
+**Full price feed & automatic**
+- (rinkeby, cons w/arg 300 VERIFIED) - 0xacFd0f27823296183E2e2017C457339358e00c60
 email: vip.hd777@gmail.com
-
 Metamask adx: 0x9f83523C25aC79Be71ea16F303c38FA7b792A5e8
+repo: https://github.com/Hachikoi-the-creator/SolidityContracts/blob/main/RoadToWeb3/5-contract-whit-API/secuential-change-wPrice/BullBear.sol
 
-repo: 
-
-Copy of random repo: 0x170855d134c64C12D971883C249603d6f7AB2610
-
-Last timestamp: 1654899554
-
-Latest price: 2908609414119
 
 
 # Full steps
@@ -41,10 +31,11 @@ Latest price: 2908609414119
 4. Run a function to make a change in the callback from `KeeperCompatible`, as well as add a new param to the constructor (timeInterval) for the `KeeperCompatible`
 5. **Alchemy** Create a new mumbai app, and copy the URL-like link on your .env, as well as your mumbai private key & your polygonscan API key
 6. Create a deploy script (just modify the sample)
-7. Deploy the contract `npx hardhat run scripts/YOUR_CONTRACT.sol --network mumbai`
+7. Deploy the contract `npx hardhat run scripts/YOUR_CONTRACT.js --network mumbai`
 8. verify your contract `npx hardhat verify --network mumbai YOUR_CONTRACT_ADDRESS YOUR_CONSTRUCTOR_ARGUMENT` [docs](https://hardhat.org/plugins/nomiclabs-hardhat-etherscan)
 9. **Oracle stuff** Register a new upkeep once the contract has been validated [here](https://keepers.chain.link/mumbai/new)
 10. [Mumbai LINK tokens](https://faucets.chain.link/mumbai)
+11. 
 
 
 ## contract deployments
@@ -58,6 +49,10 @@ Latest price: 2908609414119
 **Full price feed & automatic**
 - (rinkeby, cons w/arg 300 VERIFIED) - 0xacFd0f27823296183E2e2017C457339358e00c60
 
+**Full price feed & automatic but working fr**
+- (rinkeby, w/args 101 VERIFIED) 0xa20d0400309A1f54F7e3acd31A90d38e71802E75
+- (rinkeby, w/args 72k, update-able interval ) 
+  0xa20d0400309A1f54F7e3acd31A90d38e71802E75
 
 
 ### Hardhat setup

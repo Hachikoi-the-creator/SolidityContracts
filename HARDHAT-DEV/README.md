@@ -1,36 +1,17 @@
 # Table of contents
 - [Table of contents](#table-of-contents)
-- [Full steps](#full-steps)
-  - [contract deployments](#contract-deployments)
+  - [Extra challenges](#extra-challenges)
   - [Hardhard commands](#hardhard-commands)
 
 
-# Full steps
-1. Create a basic contract whit contract wizard (ERC721, mintable, auto-increment id's, enumerable, URI storage)
-2. Inside the contract create 2 fixed arrays whit the URI for the NFT's (.json files)
-3. Add `KeeperCompatible` from chainlik (import it, and inherit from it)
-4. Run a function to make a change in the callback from `KeeperCompatible`, as well as add a new param to the constructor (timeInterval) for the `KeeperCompatible`
-5. **Alchemy** Create a new mumbai app, and copy the URL-like link on your .env, as well as your mumbai private key & your polygonscan API key
-6. Create a deploy script (just modify the sample)
-7. Deploy the contract `npx hardhat run scripts/YOUR_CONTRACT.sol --network mumbai`
-8. verify your contract `npx hardhat verify --network mumbai YOUR_CONTRACT_ADDRESS YOUR_CONSTRUCTOR_ARGUMENT` [docs](https://hardhat.org/plugins/nomiclabs-hardhat-etherscan)
-9. **Oracle stuff** Register a new upkeep once the contract has been validated [here](https://keepers.chain.link/mumbai/new)
-10. [Mumbai LINK tokens](https://faucets.chain.link/mumbai)
+## Extra challenges
+1. Update the interest mechanism in the Staker.sol contract so that you receive a "non-linear" amount of ETH based on the blocks between deposit and withdrawal.
 
+2. Allow users to deposit any arbitrary amount of ETH into the smart contract, not just 0.5 ETH.
 
-## contract deployments
-**BullBear whit secueantial auto-update**
-- (mumbai, empty constructor VERIFIED) - 0x6371AbB68214A7a6964fdBcE17451a3180d493Ff
-- (mumbai, constructor w/args VERIFIED) - 0x37c564cf66128C01f2fD05B2ce3611Fca4ee89D1
-
-**Price consumer BTC/USD**
-- (rinkeby, basic OK) 0x56cEa0E7ac41794568590BC1D6623F5E7599FA26
-
-**Full price feed & automatic**
-- (rinkeby, cons w/arg 300 VERIFIED) - 0xacFd0f27823296183E2e2017C457339358e00c60
-
-
-
+3. Instead of using the vanilla ExampleExternalContract contract, implement a function in Staker.sol that allows you to retrieve the ETH locked up in ExampleExternalContract and re-deposit it back into the Staker contract.
+- Make sure to only "white-list" a single address to call this new function to gate its usage!.
+- Make sure that you create logic/remove existing code to ensure that users are able to interact with the Staker contract over and over again! We want to be able to ping-pong from Staker -> ExampleExternalContract repeatedly!.
 
 ## Hardhard commands
 

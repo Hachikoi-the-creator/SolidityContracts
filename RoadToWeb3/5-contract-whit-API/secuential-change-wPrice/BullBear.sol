@@ -9,10 +9,7 @@ import "@openzeppelin/contracts/access/Ownable.sol";
 import "@openzeppelin/contracts/utils/Counters.sol";
 
 // chain.link for automated updates
-//automatic
 import "@chainlink/contracts/src/v0.8/KeeperCompatible.sol";
-//price feed
-import "@chainlink/contracts/src/v0.8/interfaces/AggregatorV3Interface.sol";
 
 
 contract BullBear is ERC721, ERC721Enumerable, ERC721URIStorage, Ownable, KeeperCompatibleInterface {
@@ -20,8 +17,6 @@ contract BullBear is ERC721, ERC721Enumerable, ERC721URIStorage, Ownable, Keeper
     Counters.Counter private _tokenIdCounter;
     uint basicChangesCounter;// every time we make a call to the keepers we increment this then use it to calculate the next uri of the nft.
     mapping(uint=>address) public tokenToUser;
-    AggregatorV3Interface internal priceFeed;
-    uint BTCPRice;
 
     //? keeper variables
     uint public immutable interval;
@@ -41,10 +36,8 @@ contract BullBear is ERC721, ERC721Enumerable, ERC721URIStorage, Ownable, Keeper
     ];
 
     constructor(uint256 _updateInterval) ERC721("BullBear", "BBS"){
-        priceFeed = AggregatorV3Interface(0xECe365B379E1dD183B20fc5f022230C044d51404);
         interval = _updateInterval;
         lastTimeStamp = block.timestamp;
-        BTCPRice = uint256(getLatestPrice());
     }
 
     function safeMint(address _to) public /**onlyOwner*/ {
@@ -59,25 +52,19 @@ contract BullBear is ERC721, ERC721Enumerable, ERC721URIStorage, Ownable, Keeper
     }
 
     function updateUriWhitCounter() public {
+        // !add a way to link user whit the token they own
         uint256 index = basicChangesCounter % 3;//0,1,2
         basicChangesCounter++;
 
-        uint256 newPrice = uint256(getLatestPrice());
-        string memory uri;//new URI
+        string memory uri;
 
-        if (BTCPRice > newPrice) {
+        if(basicChangesCounter % 5 <= 2) {
+            //bull uri
             uri = bullUrisIpfs[index];
-        } 
-        else if (BTCPRice < newPrice) {
+        } else {
+            //bear uri
             uri = bearUrisIpfs[index];
         }
-        else {
-            // stop the ejectution of the function to save gas
-            return;
-        }
-
-        // Update btc price
-        BTCPRice = newPrice;
 
         //update all the nft's
         uint256 currCounter = _tokenIdCounter.current();
@@ -87,22 +74,7 @@ contract BullBear is ERC721, ERC721Enumerable, ERC721URIStorage, Ownable, Keeper
     }
 
     /*
-    * Price Feed Function
-    */
-    function getLatestPrice() public view returns (int) {
-        (
-            /*uint80 roundID*/,
-            int price,
-            /*uint startedAt*/,
-            /*uint timeStamp*/,
-            /*uint80 answeredInRound*/
-        ) = priceFeed.latestRoundData();
-        return price;
-    }
-
-
-    /*
-    * Upkeep functions
+    *Upkeep functions
     */
     // this is the function that get's called once every new block is mined (off-chain)
     // just to check if the callback function should be called
