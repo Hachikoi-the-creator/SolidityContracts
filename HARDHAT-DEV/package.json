@@ -5,7 +5,9 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "verify": "npx hardhat verify contracts/BullBear.sol --network mumbai 0x67a7E7010F8D864Ee01f8E4833b955a06DCcD21a"
+    "mumbai": "npx hardhat run scripts/anyDeploy.js --network mumbai",
+    "rinkeby": "npx hardhat run scripts/anyDeploy.js --network rinkeby",
+    "goerly": "npx hardhat run scripts/anyDeploy.js --network goerly"
   },
   "keywords": [],
   "author": "",

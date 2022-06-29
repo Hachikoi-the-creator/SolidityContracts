@@ -2,11 +2,11 @@ const hre = require("hardhat");
 
 const main = async () => {
   try {
-    const PRICE_CONSUMER = await hre.ethers.getContractFactory("PriceConsumerV3");
-    const PriceConsumer = await PRICE_CONSUMER.deploy();
-    await PriceConsumer.deployed();
+    const CONTRACT = await hre.ethers.getContractFactory("NFTMarketplace");
+    const Contract = await CONTRACT.deploy("MARKETPLACE_AAA", "PKR");//constructor args
+    await Contract.deployed();
 
-    console.log("Contract deployed to:", PriceConsumer.address);
+    console.log("Contract deployed to:", Contract.address);
     process.exit(0);
   } catch (error) {
     console.log(error);

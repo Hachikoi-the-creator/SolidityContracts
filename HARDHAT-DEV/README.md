@@ -1,17 +1,16 @@
 # Table of contents
 - [Table of contents](#table-of-contents)
-  - [Extra challenges](#extra-challenges)
+  - [Deployments](#deployments)
+  - [rnd src](#rnd-src)
   - [Hardhard commands](#hardhard-commands)
 
+## Deployments
+*IF the contract was uploaded whit Remix, optmization in hardhat.config must be false*
 
-## Extra challenges
-1. Update the interest mechanism in the Staker.sol contract so that you receive a "non-linear" amount of ETH based on the blocks between deposit and withdrawal.
+- Twitter clone Moralis VERIFIED - 0x4B0a24db3a6e5F5247a7868C02230f8F1ba0c9D1
 
-2. Allow users to deposit any arbitrary amount of ETH into the smart contract, not just 0.5 ETH.
-
-3. Instead of using the vanilla ExampleExternalContract contract, implement a function in Staker.sol that allows you to retrieve the ETH locked up in ExampleExternalContract and re-deposit it back into the Staker contract.
-- Make sure to only "white-list" a single address to call this new function to gate its usage!.
-- Make sure that you create logic/remove existing code to ensure that users are able to interact with the Staker contract over and over again! We want to be able to ping-pong from Staker -> ExampleExternalContract repeatedly!.
+## rnd src
+- [Twitter clone moralis](https://www.youtube.com/watch?v=HrlpTJD_CF0)
 
 ## Hardhard commands
 
