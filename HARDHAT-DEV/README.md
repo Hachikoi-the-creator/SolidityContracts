@@ -2,15 +2,20 @@
 - [Table of contents](#table-of-contents)
   - [Deployments](#deployments)
   - [rnd src](#rnd-src)
+    - [Bridges to remove rinkeby/kovan](#bridges-to-remove-rinkebykovan)
   - [Hardhard commands](#hardhard-commands)
 
 ## Deployments
 *IF the contract was uploaded whit Remix, optmization in hardhat.config must be false*
-
 - Twitter clone Moralis VERIFIED - 0x4B0a24db3a6e5F5247a7868C02230f8F1ba0c9D1
 
 ## rnd src
 - [Twitter clone moralis](https://www.youtube.com/watch?v=HrlpTJD_CF0)
+
+### Bridges to remove rinkeby/kovan
+- [arbitrum rky](https://bridge.arbitrum.io/)
+- [optmiism bridge](https://app.optimism.io/bridge/)
+- [zkSync only goerli](https://portal.zksync.io/bridge)
 
 ## Hardhard commands
 

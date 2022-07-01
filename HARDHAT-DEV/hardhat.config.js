@@ -20,7 +20,7 @@ module.exports = {
     hardhat: {
       chainId: 1337
     },
-    goerly: {
+    goerli: {
       url: process.env.GOERLY_ALCHEMY_LINK,
       accounts: [process.env.METAMASK_PRIVATE_KEY],
     },
@@ -30,6 +30,10 @@ module.exports = {
     },
     mumbai: {
       url: process.env.MUMBAI_ALCHEMY_LINK,
+      accounts: [process.env.METAMASK_PRIVATE_KEY],
+    },
+    optimism: {
+      url: process.env.OPTIMISM_KOVAN_ALCHEMY_LINK,
       accounts: [process.env.METAMASK_PRIVATE_KEY],
     },
   },
@@ -46,12 +50,12 @@ module.exports = {
 
   solidity: {
     version: "0.8.7",
-    // settings: {
-    //   optimizer: {
-    //     enabled: true,
-    //     runs: 200
-    //   }
-    // }
+    settings: {
+      optimizer: {
+        enabled: true,
+        runs: 200
+      }
+    }
   }
 };
 // ___________

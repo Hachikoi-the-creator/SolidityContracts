@@ -3,7 +3,7 @@ const hre = require("hardhat");
 const main = async () => {
   try {
     const CONTRACT = await hre.ethers.getContractFactory("NFTMarketplace");
-    const Contract = await CONTRACT.deploy("MARKETPLACE_AAA", "PKR");//constructor args
+    const Contract = await CONTRACT.deploy();//constructor args
     await Contract.deployed();
 
     console.log("Contract deployed to:", Contract.address);
