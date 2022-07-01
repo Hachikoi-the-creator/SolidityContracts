@@ -1,5 +1,6 @@
 # Table of contents
 - [Table of contents](#table-of-contents)
+  - [Submit data](#submit-data)
   - [Deployments](#deployments)
 - [Some notes](#some-notes)
 - [Basic steps](#basic-steps)
@@ -10,10 +11,17 @@
   - [Extra challenges](#extra-challenges)
 
 
+## Submit data
+
+- email: vip.hd777@gmail.com
+- Metamask adx: 0x9f83523C25aC79Be71ea16F303c38FA7b792A5e8
+
+- repo: https://github.com/Hachikoi-the-creator/SolidityContracts/blob/main/RoadToWeb3/6-schalafold-eth/contracts/Staker.sol
+- contract adx: 0xbd2FF7cD543334759b3eF2Fc57d63EfbED58e936
 
 ## Deployments
 - (lil upgrade, Rinkeby) - 0xB3508810A8cF72d8F564C672f0c970396c0E211e
-- (bigg upgrade, Rinkeby 169, 369) - 0xbd2FF7cD543334759b3eF2Fc57d63EfbED58e936
+- (bigg upgrade, Rinkeby 169, 369 VERIFIED) - 0xbd2FF7cD543334759b3eF2Fc57d63EfbED58e936
 
 
 # Some notes
