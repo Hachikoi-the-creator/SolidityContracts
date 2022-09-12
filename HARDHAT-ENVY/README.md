@@ -1,13 +1,18 @@
-# Sample Hardhat Project
+#  My template
+## React + Moralis
+- https://github.com/Hachikoi-Marine/React-Moralis-Template.git
+## React + Router-dom + Moralis
+- https://github.com/Hachikoi-Marine/React-router-Moralis-template.git
+## Next + Moralis
+- https://github.com/Hachikoi-Marine/Nextjs-Moralis-Template.git
 
-This project demonstrates a basic Hardhat use case. It comes with a sample contract, a test for that contract, and a script that deploys that contract.
 
-Try running some of the following tasks:
+# Some contracts
+## LearnWeb3DAO
+**Whitelist**
+adx: 0x2aE2E63B0de45e28De13Fd5f5ae93D9B6439f810
+args: 10
 
-```shell
-npx hardhat help
-npx hardhat test
-GAS_REPORT=true npx hardhat test
-npx hardhat node
-npx hardhat run scripts/deploy.js
-```
+**NFT w/whitelist**
+adx: 0x435dbfF81Bb7DD58d9582e3E870B2FA369cb55D2
+args: 0x2aE2E63B0de45e28De13Fd5f5ae93D9B6439f810 21

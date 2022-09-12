@@ -116,10 +116,6 @@ contract CryptoDevsNFT is ERC721, ERC721Enumerable, ERC721URIStorage, Ownable {
     /*
      *Dev tools
      */
-    // //  !remove later
-    // function givemeTimestamp() public view returns (uint) {
-    //     return block.timestamp;
-    // }
     function _getNFTPrice(bool presaleMint_) internal pure returns (uint) {
         if (presaleMint_) {
             return 0.05 ether;
